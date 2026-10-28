@@ -1,9 +1,5 @@
 # Web Server Security --- Group Assignment
 
-**Course:** Cyber Security (IT-30001)\
-**Institution:** Indian Institute of Information Technology Allahabad\
-**Semester:** Autumn 2026
-
 ## Project Overview
 
 This repository contains our group's educational implementations of
@@ -17,8 +13,6 @@ mitigation.
 -   SQL Injection --- Authentication Bypass
 -   Cross-Site Scripting (XSS) --- Reflected XSS
 -   Cross-Site Request Forgery (CSRF) --- GET-based forged action
-
-OS command injection is not included in our current project.
 
 ## Repository Structure
 
@@ -54,24 +48,11 @@ the instructions in that folder's README.
 
 ## Ownership Declaration
 
-The following table follows the four-column ownership format specified
-in Table 3 of the assignment.
-
-  -----------------------------------------------------------------------
-  Member name       Roll number       Category          Variant
-                                                        implemented
-  ----------------- ----------------- ----------------- -----------------
-  Narim Harshith    IIT2024225        SQL Injection     Variant 1 ---
-                                                        Authentication
-                                                        bypass
-
-  Surendra Reddy    IIT2024224        Cross-Site        Variant 2 ---
-                                      Scripting (XSS)   Reflected XSS
-
-  Goutham           IIT2024272        Cross-Site        Variant 1 ---
-                                      Request Forgery   GET-based forged
-                                      (CSRF)            action
-  -----------------------------------------------------------------------
+| Group Member | Roll Number | Vulnerability Category | Variant |
+|---|---|---|---|
+| Narim Harshith | IIT2024225 | SQL Injection | Authentication Bypass |
+| Surendra Reddy | IIT2024224 | Cross-Site Scripting (XSS) | Reflected XSS |
+| Goutham | IIT2024272 | Cross-Site Request Forgery (CSRF) | GET-based Forged Action |
 
 ## Demonstration Requirements
 
