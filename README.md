@@ -1,25 +1,20 @@
 # Web Server Security --- Group Assignment
 
-**Course:** Cyber Security (IT-30001)\
 **Institution:** Indian Institute of Information Technology Allahabad\
+**Department:** Information Technology\
+**Course:** Cyber Security (IT-30001)\
 **Semester:** Autumn 2026
 
 ## Project overview
 
-This repository contains our group's educational demonstrations of
-web-server vulnerabilities. Each member is responsible for one distinct
-vulnerability variant, including the vulnerable implementation, a
-working demonstration, an explanation of the root cause, and one
-implemented mitigation.
+This repository contains our group's implementations for the Web Server
+Security assignment. Each member implements one vulnerability variant,
+demonstrates the vulnerable behavior in the group's own application,
+explains the root cause, and demonstrates one mitigation that blocks the
+same test.
 
-Our current project covers three categories:
-
--   **SQL Injection --- Authentication Bypass**
--   **Cross-Site Scripting (XSS) --- Reflected XSS**
--   **Cross-Site Request Forgery (CSRF) --- GET-based forged action**
-
-OS command injection is not part of our current implementation and is
-therefore not listed as a project component.
+The current implementations in this repository cover SQL Injection,
+Cross-Site Scripting (XSS), and Cross-Site Request Forgery (CSRF).
 
 ## Repository structure
 
@@ -49,16 +44,17 @@ Web-server-security/
 └── README.md
 ```
 
-The exact contents within each project folder may include additional
-supporting files. Each application has its own dependencies and should
-be installed and run from its own directory, except where a project's
-README says otherwise.
+Each application has its own dependencies. Refer to the README inside
+the relevant folder for setup and demonstration instructions.
 
-## Group ownership declaration
+## Ownership declaration
+
+The following table follows **Table 3 (Ownership)** in the assignment
+document.
 
   -----------------------------------------------------------------------
-  Member name       Roll number       Vulnerability     Variant
-                                      category          implemented
+  Member name       Roll number       Category          Variant
+                                                        implemented
   ----------------- ----------------- ----------------- -----------------
   Narim Harshith    IIT2024225        SQL Injection     Variant 1 ---
                                                         Authentication
@@ -72,43 +68,34 @@ README says otherwise.
                                       (CSRF)            action
   -----------------------------------------------------------------------
 
-The assignment requires each member's contribution to be identifiable in
-the ownership declaration, demonstration video, and viva.
+## Demonstration requirements
 
-## Assignment demonstration requirements
-
-For each implemented variant, the group prepares to demonstrate:
-
-1.  The vulnerable code path.
-2.  The working exploit or forged request in the group's own test
-    application.
-3.  The root cause.
-4.  The mitigation implemented and evidence that the same test is
-    blocked.
-5.  The basic idea of the other mitigation options listed for that
-    vulnerability.
+For each member's variant, the demonstration should identify the
+vulnerable code path, show the working exploit or forged request,
+explain the root cause, and show the same test being blocked by the
+implemented mitigation. Each member should also be prepared to explain
+the alternative mitigations listed for their category.
 
 ### Mitigation topics
 
--   **SQL injection:** parameterized queries, allow-list input
-    validation, least-privilege database accounts, and safe error
-    handling.
--   **XSS:** context-aware output encoding, framework auto-escaping,
-    sanitization of rich HTML, Content Security Policy (CSP), HttpOnly
-    cookies, and safe DOM sinks.
--   **CSRF:** synchronizer CSRF tokens, SameSite cookies,
-    re-authentication for sensitive actions, and avoiding state-changing
-    GET requests.
+-   **SQL Injection:** parameterized queries, input validation with
+    allow-lists, least-privilege database accounts, and safe errors.
+-   **Cross-Site Scripting (XSS):** context-aware output encoding,
+    framework auto-escaping, sanitization for rich HTML, Content
+    Security Policy (CSP), HttpOnly cookies, and safe DOM sinks.
+-   **Cross-Site Request Forgery (CSRF):** anti-CSRF (synchronizer)
+    tokens, SameSite cookies, re-authentication for sensitive actions,
+    and avoiding state-changing GET requests.
 
 ## Safety and scope
 
-These applications are for controlled educational testing. Test only
+These applications are for educational demonstrations. Test only
 applications owned or authorized by our group. Do not expose
 intentionally vulnerable endpoints to public networks or use them in
 production.
 
-Keep `.env` files, database credentials, and `node_modules/` out of
-GitHub. The root `.gitignore` should include at least:
+Keep local `.env` files, database credentials, and `node_modules/` out
+of GitHub. The root `.gitignore` should include:
 
 ``` gitignore
 node_modules/
@@ -116,10 +103,8 @@ node_modules/
 *.log
 ```
 
-## Project-specific instructions
+## Project-specific documentation
 
--   SQL injection: see
-    [`sql-injection/README.md`](sql-injection/README.md).
--   Reflected XSS: see
-    [`cross_site_scripting/README.md`](cross_site_scripting/README.md).
--   CSRF: see [`csrf-protection/README.md`](csrf-protection/README.md).
+-   [SQL Injection README](sql-injection/README.md)
+-   [Cross-Site Scripting README](cross_site_scripting/README.md)
+-   [CSRF README](csrf-protection/README.md)
