@@ -1,110 +1,125 @@
-# Web Server Security — Vulnerability Exploitation and Mitigation
+# Web Server Security --- Group Assignment
 
-## 1. Project Overview
+**Course:** Cyber Security (IT-30001)\
+**Institution:** Indian Institute of Information Technology Allahabad\
+**Semester:** Autumn 2026
 
-This repository contains our group assignment on identifying, demonstrating, and mitigating web server vulnerabilities. Each group member implements one vulnerability variant, demonstrates how it can be exploited in a controlled environment, and implements a mitigation to prevent the same attack.
+## Project overview
 
-The project focuses on the following vulnerability categories:
+This repository contains our group's educational demonstrations of
+web-server vulnerabilities. Each member is responsible for one distinct
+vulnerability variant, including the vulnerable implementation, a
+working demonstration, an explanation of the root cause, and one
+implemented mitigation.
 
-- SQL Injection
-- OS Command Injection
-- Cross-Site Scripting (XSS)
-- Cross-Site Request Forgery (CSRF)
+Our current project covers three categories:
 
-The categories included in the final submission depend on the variants implemented by our group members.
+-   **SQL Injection --- Authentication Bypass**
+-   **Cross-Site Scripting (XSS) --- Reflected XSS**
+-   **Cross-Site Request Forgery (CSRF) --- GET-based forged action**
 
-## 2. Repository Structure
+OS command injection is not part of our current implementation and is
+therefore not listed as a project component.
 
-```text
+## Repository structure
+
+``` text
 Web-server-security/
 ├── sql-injection/
 │   ├── server.js
 │   ├── package.json
 │   ├── package-lock.json
-│   └── sql_injection_lab.sql
-├── command-injection/
-├── xss/
-├── csrf/
+│   ├── sql_injection_lab.sql
+│   └── README.md
+├── cross_site_scripting/
+│   ├── server.js
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── demonstration_pictures/
+│   └── README.md
+├── csrf-protection/
+│   ├── attacker/
+│   ├── secure/
+│   ├── vulnerable/
+│   ├── public/
+│   ├── package.json
+│   ├── package-lock.json
+│   └── README.md
 ├── .gitignore
 └── README.md
 ```
 
-Each vulnerability folder contains the source code and other required files for that implementation. Folders for unimplemented categories may be empty or omitted.
+The exact contents within each project folder may include additional
+supporting files. Each application has its own dependencies and should
+be installed and run from its own directory, except where a project's
+README says otherwise.
 
-## 3. Implemented Vulnerability: SQL Injection
+## Group ownership declaration
 
-**Variant:** Authentication Bypass
+  -----------------------------------------------------------------------
+  Member name       Roll number       Vulnerability     Variant
+                                      category          implemented
+  ----------------- ----------------- ----------------- -----------------
+  Narim Harshith    IIT2024225        SQL Injection     Variant 1 ---
+                                                        Authentication
+                                                        bypass
 
-The SQL injection application uses Node.js, Express, and MySQL to demonstrate an authentication vulnerability and its mitigation.
+  Surendra Reddy    IIT2024224        Cross-Site        Variant 2 ---
+                                      Scripting (XSS)   Reflected XSS
 
-### Vulnerable implementation
+  Goutham           IIT2024272        Cross-Site        Variant 1 ---
+                                      Request Forgery   GET-based forged
+                                      (CSRF)            action
+  -----------------------------------------------------------------------
 
-The vulnerable login endpoint constructs an SQL query by concatenating user-supplied input into the query string. An attacker may manipulate the query's logic to bypass authentication.
+The assignment requires each member's contribution to be identifiable in
+the ownership declaration, demonstration video, and viva.
 
-### Exploitation demonstration
+## Assignment demonstration requirements
 
-The application provides a controlled test environment where the same demonstration input can be tested against both the vulnerable and secure login endpoints.
+For each implemented variant, the group prepares to demonstrate:
 
-Testing is restricted to our own local application and test database.
+1.  The vulnerable code path.
+2.  The working exploit or forged request in the group's own test
+    application.
+3.  The root cause.
+4.  The mitigation implemented and evidence that the same test is
+    blocked.
+5.  The basic idea of the other mitigation options listed for that
+    vulnerability.
 
-### Implemented mitigation
+### Mitigation topics
 
-The secure login endpoint uses parameterized SQL queries. User input is bound as data rather than interpreted as part of the SQL statement.
+-   **SQL injection:** parameterized queries, allow-list input
+    validation, least-privilege database accounts, and safe error
+    handling.
+-   **XSS:** context-aware output encoding, framework auto-escaping,
+    sanitization of rich HTML, Content Security Policy (CSP), HttpOnly
+    cookies, and safe DOM sinks.
+-   **CSRF:** synchronizer CSRF tokens, SameSite cookies,
+    re-authentication for sensitive actions, and avoiding state-changing
+    GET requests.
 
-The same injection attempt should fail against the secure endpoint.
+## Safety and scope
 
-### Technologies used
+These applications are for controlled educational testing. Test only
+applications owned or authorized by our group. Do not expose
+intentionally vulnerable endpoints to public networks or use them in
+production.
 
-- JavaScript
-- Node.js
-- Express.js
-- MySQL
-- mysql2
-- dotenv
+Keep `.env` files, database credentials, and `node_modules/` out of
+GitHub. The root `.gitignore` should include at least:
 
-## 4. Other Vulnerability Implementations
+``` gitignore
+node_modules/
+.env
+*.log
+```
 
-Additional group members may contribute separate implementations for OS command injection, XSS, and CSRF. Each implementation should document its selected variant, vulnerable code path, demonstration input, root cause, implemented mitigation, and other mitigation approaches.
+## Project-specific instructions
 
-## 5. Group Ownership Declaration
-
-| Group Member | Roll Number | Vulnerability Category | Variant |
-|---|---|---|---|
-| Narim Harshith | IIT2024225 | SQL Injection | Authentication Bypass |
-| [Member 2] | [Roll Number] | [Category] | [Variant] |
-| [Member 3] | [Roll Number] | [Category] | [Variant] |
-| [Member 4] | [Roll Number] | [Category] | [Variant] |
-
-Replace the placeholders with the actual details of your group members and the variants they implement.
-
-## 6. Running the SQL Injection Application
-
-Requirements:
-
-- Node.js and npm
-- MySQL Server
-
-1. Create the `sql_injection_lab` database and the `users` table using the supplied SQL script.
-2. Configure the local database credentials in a `.env` file.
-3. Install the Node.js dependencies from the SQL injection project's directory:
-
-   ```bash
-   npm install
-   ```
-
-4. Start the application:
-
-   ```bash
-   node server.js
-   ```
-
-5. Open `http://localhost:3000` in your browser.
-6. Test the vulnerable and secure login endpoints using the application's test inputs.
-
-Keep `.env` and `node_modules` out of version control. Use only test accounts and a local database for the demonstration.
-
-## 7. Security and Testing Scope
-
-This project is intended for educational purposes. Vulnerability demonstrations must be performed only against applications owned or authorized by our group. The intentionally vulnerable endpoints must not be exposed to public networks or used in production.
-
----
+-   SQL injection: see
+    [`sql-injection/README.md`](sql-injection/README.md).
+-   Reflected XSS: see
+    [`cross_site_scripting/README.md`](cross_site_scripting/README.md).
+-   CSRF: see [`csrf-protection/README.md`](csrf-protection/README.md).
