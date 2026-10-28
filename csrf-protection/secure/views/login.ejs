@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Login - Account Portal (Secure)</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="auth-wrap">
+    <div class="card auth-card">
+      <h1>Account Portal</h1>
+      <p class="muted">Sign in to manage your account</p>
+      <% if (error) { %>
+        <div class="alert alert-error"><%= error %></div>
+      <% } %>
+      <form method="POST" action="/login">
+        <label>Username</label>
+        <input type="text" name="username" placeholder="goutham" required>
+        <label>Password</label>
+        <input type="password" name="password" placeholder="goutham123" required>
+        <button type="submit" class="btn btn-primary">Log in</button>
+      </form>
+      <p class="hint">Demo credentials: <strong>goutham</strong> / <strong>goutham123</strong><br>
+      (Hard-coded for this local educational project only.)</p>
+    </div>
+  </div>
+</body>
+</html>

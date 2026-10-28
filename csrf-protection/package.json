@@ -1,0 +1,16 @@
+{
+  "name": "csrf-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CSRF lab - Variant 1 (GET-based forged action): vulnerable app, secure app, attacker app",
+  "scripts": {
+    "start:vulnerable": "node vulnerable/server.js",
+    "start:secure": "node secure/server.js",
+    "start:attacker": "node attacker/server.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.1"
+  }
+}

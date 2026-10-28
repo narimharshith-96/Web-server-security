@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard - Account Portal (Secure)</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <%- include('_nav') %>
+  <main class="container">
+    <h1>Welcome back, Goutham</h1>
+    <% if (message) { %><div class="alert alert-success"><%= message %></div><% } %>
+    <div class="card">
+      <h2>Account overview</h2>
+      <p><strong>Current email:</strong> <span id="email-value"><%= email %></span></p>
+      <p class="muted">Use Settings to change your email address.</p>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Settings - Account Portal (Secure)</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <%- include('_nav') %>
+  <main class="container">
+    <h1>Account settings</h1>
+    <% if (success) { %><div class="alert alert-success"><%= success %></div><% } %>
+    <% if (error) { %><div class="alert alert-error"><%= error %></div><% } %>
+    <div class="card">
+      <h2>Current email</h2>
+      <p><%= email %></p>
+    </div>
+    <div class="card">
+      <h2>Change email address</h2>
+      <form method="POST" action="/settings/update-email">
+        <input type="hidden" name="csrfToken" value="<%= csrfToken %>">
+        <label>New email</label>
+        <input type="email" name="email" required placeholder="you@example.com">
+        <button type="submit" class="btn btn-primary">Update email</button>
+      </form>
+    </div>
+    <div class="card note-card">
+      <strong>Lab note:</strong> this form submits a POST request together with a
+      server-issued CSRF token. The legacy GET endpoint
+      (<code>/settings/update-email?email=...</code>) is explicitly rejected with
+      <code>405 Method Not Allowed</code>, and this POST route rejects any request
+      with a missing or incorrect token using <code>403 Forbidden</code>.
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exclusive Offer - US Polo Assn.</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body class="voucher-body">
+  <main class="voucher-wrap">
+    <div class="voucher-card">
+      <div class="badge">90% OFF</div>
+      <div class="shoe-illustration" aria-hidden="true">&#128095;</div>
+      <h1>You have a 90% offer on US Polo Assn. shoes!</h1>
+      <p class="voucher-sub">Limited-time promotional voucher. Valid while supplies last.</p>
+      <button id="claimBtn" class="btn btn-claim" type="button">Claim Offer</button>
+      <p class="voucher-fine">*This is a simulated promotional page built for an academic CSRF lab demonstration. No real offer is provided.</p>
+    </div>
+  </main>
+  <script>
+    document.getElementById('claimBtn').addEventListener('click', function () {
+      fetch('/log-click', { method: 'POST' }).catch(function () {});
+      window.open('<%= targetUrl %>', '_blank');
+    });
+  </script>
+</body>
+</html>
